@@ -45,7 +45,7 @@ export function RemoveExtraSpacesTool() {
               checked={collapseMultiple}
               disabled={removeAll}
               onChange={(e) => setCollapseMultiple(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Collapse Multiple Spaces to Single</span>
           </label>
@@ -56,7 +56,7 @@ export function RemoveExtraSpacesTool() {
               checked={removeLeading}
               disabled={removeAll}
               onChange={(e) => setRemoveLeading(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Remove Leading Whitespace</span>
           </label>
@@ -67,7 +67,7 @@ export function RemoveExtraSpacesTool() {
               checked={removeTrailing}
               disabled={removeAll}
               onChange={(e) => setRemoveTrailing(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Remove Trailing Whitespace</span>
           </label>
@@ -77,7 +77,7 @@ export function RemoveExtraSpacesTool() {
               type="checkbox"
               checked={removeAll}
               onChange={(e) => setRemoveAll(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span className="text-rose-700 font-bold">Remove ALL Spaces Entirely</span>
           </label>
@@ -88,7 +88,7 @@ export function RemoveExtraSpacesTool() {
                 type="checkbox"
                 checked={convertTabsToSpaces}
                 onChange={(e) => setConvertTabsToSpaces(e.target.checked)}
-                className="rounded accent-emerald-600"
+                className="rounded accent-indigo-600"
               />
               <span>Convert Tabs to Spaces</span>
             </label>

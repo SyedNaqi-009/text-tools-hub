@@ -19,7 +19,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col antialiased text-slate-800 bg-slate-50">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-emerald-600 text-white rounded-lg shadow-lg"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 px-4 py-2 bg-indigo-600 text-white rounded-lg shadow-lg"
         >
           Skip to main content
         </a>

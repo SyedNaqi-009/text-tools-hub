@@ -38,7 +38,7 @@ export function TextToBinaryTool() {
   return (
     <div className="space-y-6">
       {/* Mode Switcher */}
-      <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
+      <div className="p-4 bg-white border border-slate-200/90 rounded-2xl shadow-xs flex items-center justify-between">
         <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
           Conversion Direction:
         </span>
@@ -46,10 +46,10 @@ export function TextToBinaryTool() {
           <button
             type="button"
             onClick={() => setMode('text-to-binary')}
-            className={`px-3 py-1.5 rounded-lg font-bold transition-all ${
+            className={`px-3.5 py-1.5 rounded-xl font-bold transition-all ${
               mode === 'text-to-binary'
-                ? 'bg-emerald-600 text-white shadow-xs'
-                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                ? 'bg-slate-950 text-white shadow-xs'
+                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
             }`}
           >
             Text → Binary
@@ -57,7 +57,7 @@ export function TextToBinaryTool() {
           <button
             type="button"
             onClick={toggleMode}
-            className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-emerald-700 hover:border-emerald-300 transition-colors"
+            className="p-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 hover:text-indigo-600 hover:border-indigo-300 transition-colors"
             title="Swap input and output"
           >
             <ArrowLeftRight className="w-3.5 h-3.5" />
@@ -65,10 +65,10 @@ export function TextToBinaryTool() {
           <button
             type="button"
             onClick={() => setMode('binary-to-text')}
-            className={`px-3 py-1.5 rounded-lg font-bold transition-all ${
+            className={`px-3.5 py-1.5 rounded-xl font-bold transition-all ${
               mode === 'binary-to-text'
-                ? 'bg-emerald-600 text-white shadow-xs'
-                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                ? 'bg-slate-950 text-white shadow-xs'
+                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
             }`}
           >
             Binary → Text
@@ -106,25 +106,25 @@ export function TextToBinaryTool() {
       {mode === 'text-to-binary' && tableRows.length > 0 && (
         <div className="space-y-3 pt-2">
           <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-            Character Encoding Breakdown Table
+            Character Encoding Breakdown Matrix
           </h3>
-          <div className="rounded-xl border border-slate-200 overflow-hidden bg-white shadow-xs max-h-[300px] overflow-y-auto">
-            <table className="w-full text-left text-xs font-mono-code">
-              <thead className="bg-slate-50 border-b border-slate-200 text-[11px] font-semibold text-slate-600 sticky top-0">
+          <div className="rounded-2xl border border-slate-200/90 overflow-hidden bg-white shadow-xs max-h-[300px] overflow-y-auto">
+            <table className="w-full text-left text-xs font-mono">
+              <thead className="bg-slate-50 border-b border-slate-200 text-[11px] font-bold uppercase tracking-wider text-slate-600 sticky top-0">
                 <tr>
-                  <th className="py-2 px-4">Character</th>
-                  <th className="py-2 px-4">Binary (8-bit)</th>
-                  <th className="py-2 px-4">Decimal (ASCII)</th>
-                  <th className="py-2 px-4">Hexadecimal</th>
+                  <th className="py-2.5 px-4 font-sans">Character</th>
+                  <th className="py-2.5 px-4">Binary (8-bit)</th>
+                  <th className="py-2.5 px-4">Decimal (ASCII)</th>
+                  <th className="py-2.5 px-4">Hexadecimal</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {tableRows.map((row, idx) => (
                   <tr key={idx} className="hover:bg-slate-50/70 transition-colors">
-                    <td className="py-1.5 px-4 font-bold text-slate-900 font-sans">{row.char}</td>
-                    <td className="py-1.5 px-4 text-emerald-700 font-bold">{row.binary}</td>
-                    <td className="py-1.5 px-4 text-slate-600">{row.decimal}</td>
-                    <td className="py-1.5 px-4 text-slate-600">{row.hex}</td>
+                    <td className="py-2 px-4 font-bold text-slate-900 font-sans">{row.char}</td>
+                    <td className="py-2 px-4 text-indigo-600 font-bold">{row.binary}</td>
+                    <td className="py-2 px-4 text-slate-600">{row.decimal}</td>
+                    <td className="py-2 px-4 text-slate-600">{row.hex}</td>
                   </tr>
                 ))}
               </tbody>

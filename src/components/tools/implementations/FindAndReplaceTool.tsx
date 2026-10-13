@@ -88,7 +88,7 @@ export function FindAndReplaceTool() {
                 type="checkbox"
                 checked={caseSensitive}
                 onChange={(e) => setCaseSensitive(e.target.checked)}
-                className="rounded accent-emerald-600"
+                className="rounded accent-indigo-600"
               />
               <span>Case Sensitive</span>
             </label>
@@ -99,7 +99,7 @@ export function FindAndReplaceTool() {
                 checked={wholeWord}
                 disabled={useRegex}
                 onChange={(e) => setWholeWord(e.target.checked)}
-                className="rounded accent-emerald-600"
+                className="rounded accent-indigo-600"
               />
               <span>Whole Word Only</span>
             </label>
@@ -109,15 +109,15 @@ export function FindAndReplaceTool() {
                 type="checkbox"
                 checked={useRegex}
                 onChange={(e) => setUseRegex(e.target.checked)}
-                className="rounded accent-emerald-600"
+                className="rounded accent-indigo-600"
               />
-              <span className="font-bold text-emerald-800">Use Regex (.*)</span>
+              <span className="font-bold text-indigo-700">Use Regex (.*)</span>
             </label>
           </div>
 
           <div className="flex items-center space-x-3">
             {lastMatchCount !== null && (
-              <span className="text-emerald-700 font-bold flex items-center space-x-1">
+              <span className="text-indigo-600 font-bold flex items-center space-x-1 font-mono text-xs">
                 <Check className="w-3.5 h-3.5" />
                 <span>Replaced {lastMatchCount} occurrences</span>
               </span>
@@ -126,7 +126,7 @@ export function FindAndReplaceTool() {
             <button
               type="button"
               onClick={handleExecuteReplace}
-              className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition-colors shadow-xs"
+              className="flex items-center space-x-1.5 px-5 py-2.5 rounded-xl bg-slate-950 hover:bg-indigo-600 text-white font-semibold transition-all shadow-sm"
             >
               <Search className="w-3.5 h-3.5" />
               <span>Replace All</span>

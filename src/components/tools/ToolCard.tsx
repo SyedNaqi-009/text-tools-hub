@@ -59,28 +59,30 @@ export function ToolCard({ tool }: { tool: TextTool }) {
   return (
     <Link
       href={`/tools/${tool.slug}`}
-      className="group relative flex flex-col p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5 transition-all duration-200"
+      className="group relative flex flex-col p-6 rounded-2xl bg-white border border-slate-200/80 hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/5 transition-all duration-300 hover:-translate-y-1"
     >
       <div className="flex items-center justify-between mb-4">
-        <div className="w-11 h-11 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-200">
-          <IconComponent className="w-5 h-5" />
+        <div className="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center group-hover:bg-indigo-600 transition-colors duration-300 shadow-sm">
+          <IconComponent className="w-5 h-5 text-indigo-300 group-hover:text-white transition-colors" />
         </div>
-        <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
+        <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 group-hover:bg-indigo-50 group-hover:text-indigo-700 transition-colors">
           {tool.categoryLabel}
         </span>
       </div>
 
-      <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-700 transition-colors mb-2">
+      <h3 className="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition-colors mb-2">
         {tool.name}
       </h3>
 
-      <p className="text-sm text-slate-600 leading-relaxed line-clamp-2 mb-4 grow">
+      <p className="text-sm text-slate-600 leading-relaxed line-clamp-2 mb-5 grow">
         {tool.shortDescription}
       </p>
 
-      <div className="flex items-center text-xs font-semibold text-emerald-700 group-hover:text-emerald-800 transition-colors pt-2 border-t border-slate-100">
-        <span>Use Tool</span>
-        <ArrowRight className="w-3.5 h-3.5 ml-1.5 transition-transform group-hover:translate-x-1" />
+      <div className="flex items-center justify-between text-xs font-semibold text-slate-400 group-hover:text-indigo-600 transition-colors pt-3 border-t border-slate-100">
+        <span className="font-mono text-[11px]">Instant Launch</span>
+        <div className="w-7 h-7 rounded-full bg-slate-50 group-hover:bg-indigo-50 flex items-center justify-center transition-colors">
+          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+        </div>
       </div>
     </Link>
   );

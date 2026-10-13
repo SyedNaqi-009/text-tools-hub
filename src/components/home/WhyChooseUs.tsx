@@ -1,61 +1,74 @@
 import React from 'react';
 import { Container } from '../ui/Container';
-import { SectionHeading } from '../ui/SectionHeading';
-import { Shield, Zap, UserCheck, Smartphone } from 'lucide-react';
+import { ShieldCheck, Cpu, Lock, Sparkles } from 'lucide-react';
 
-const FEATURES = [
+const HIGHLIGHTS = [
   {
-    icon: Shield,
-    title: '100% Client-Side Privacy',
+    icon: ShieldCheck,
+    title: 'Client-Side Privacy Guarantee',
     description:
-      'Every transformation occurs exclusively within your local web browser. Your sensitive manuscripts, passwords, and data never touch our servers.',
+      'All text analysis, case conversions, and diff inspections occur directly inside your web browser’s JavaScript engine. Zero bytes are uploaded to remote servers.',
   },
   {
-    icon: Zap,
-    title: 'Instant Execution',
+    icon: Cpu,
+    title: 'Zero-Latency Engine',
     description:
-      'Zero network latency or roundtrip file uploads. Results compute in milliseconds using modern JavaScript algorithms with immediate responsiveness.',
+      'No slow API roundtrips or server-side queues. Designed for immediate execution and debounced for handling large multi-megabyte text datasets.',
   },
   {
-    icon: UserCheck,
-    title: 'No Registration Required',
+    icon: Lock,
+    title: 'No Accounts or Paywalls',
     description:
-      'Access every utility freely without signing up, creating accounts, entering credit card numbers, or validating email addresses.',
+      'Unlimited, unrestricted utility access. No email verification, sign-ups, subscriptions, or intrusive pop-up paywalls required.',
   },
   {
-    icon: Smartphone,
-    title: 'Mobile-First Workspace',
+    icon: Sparkles,
+    title: 'Studio Ergonomics',
     description:
-      'Engineered with dedicated responsive controls that adapt seamlessly whether you are editing on a smartphone, tablet, or desktop workstation.',
+      'Clean typography, monospace data fields, one-click clipboard copying, and responsive layouts fine-tuned across mobile, tablet, and desktop.',
   },
 ];
 
 export function WhyChooseUs() {
   return (
-    <section className="py-16 bg-slate-50/70 border-t border-slate-200">
-      <Container>
-        <SectionHeading
-          title="Why Choose TextToolsHub?"
-          subtitle="Built to overcome the slow loading times, invasive trackers, and cluttered interfaces typical of legacy text sites."
-          centered
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {FEATURES.map((item, idx) => {
+    <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
+      <div className="absolute top-1/2 left-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+
+      <Container className="relative z-10">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className="text-xs font-mono font-bold uppercase tracking-widest text-indigo-400">
+            Engineered Differently
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white mt-3">
+            Built for Extreme Speed & Total Privacy
+          </h2>
+          <p className="mt-4 text-slate-400 text-sm sm:text-base leading-relaxed">
+            Unlike legacy ad-bloated text tool sites, TextToolsHub delivers an uncompromising professional experience.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {HIGHLIGHTS.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="flex flex-col p-6 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-emerald-500/40 transition-all"
+                className="p-8 rounded-3xl bg-slate-950/70 border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 flex flex-col justify-between"
               >
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700 mb-4">
-                  <Icon className="w-6 h-6" />
+                <div>
+                  <div className="w-12 h-12 rounded-2xl bg-indigo-600/20 border border-indigo-500/30 text-indigo-400 flex items-center justify-center mb-6">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-slate-400 leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  {item.description}
-                </p>
+                <div className="mt-6 pt-4 border-t border-slate-800/80 text-[11px] font-mono text-slate-500">
+                  Standard Guarantee #0{idx + 1}
+                </div>
               </div>
             );
           })}

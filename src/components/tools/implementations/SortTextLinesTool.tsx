@@ -53,10 +53,10 @@ export function SortTextLinesTool() {
                 key={opt.mode}
                 type="button"
                 onClick={() => setMode(opt.mode)}
-                className={`py-2 px-3 rounded-lg font-bold text-left transition-all ${
+                className={`py-2 px-3 rounded-xl font-bold text-left transition-all ${
                   mode === opt.mode
-                    ? 'bg-emerald-600 text-white shadow-xs'
-                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                    ? 'bg-slate-950 text-white shadow-xs'
+                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
                 }`}
               >
                 {opt.label}
@@ -71,7 +71,7 @@ export function SortTextLinesTool() {
               type="checkbox"
               checked={removeDuplicates}
               onChange={(e) => setRemoveDuplicates(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Remove Duplicates While Sorting</span>
           </label>
@@ -81,7 +81,7 @@ export function SortTextLinesTool() {
               type="checkbox"
               checked={caseSensitive}
               onChange={(e) => setCaseSensitive(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Case Sensitive</span>
           </label>
@@ -91,7 +91,7 @@ export function SortTextLinesTool() {
               type="checkbox"
               checked={trimLines}
               onChange={(e) => setTrimLines(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Trim Lines</span>
           </label>
@@ -101,7 +101,7 @@ export function SortTextLinesTool() {
               type="checkbox"
               checked={ignoreEmptyLines}
               onChange={(e) => setIgnoreEmptyLines(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Ignore Empty Lines</span>
           </label>

@@ -47,7 +47,7 @@ export function SlugGeneratorTool() {
               type="checkbox"
               checked={lowercase}
               onChange={(e) => setLowercase(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Convert to Lowercase</span>
           </label>

@@ -21,7 +21,7 @@ export default function BlogListingPage() {
         <Breadcrumbs items={breadcrumbs} />
 
         <div className="mb-12 text-center sm:text-left">
-          <span className="text-xs font-semibold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+          <span className="text-xs font-semibold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full border border-indigo-200">
             Editorial & Technical Guides
           </span>
           <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight">

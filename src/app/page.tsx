@@ -18,7 +18,7 @@ import {
   generateWebsiteSchema,
 } from '@/lib/seo';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, BookOpen, Sparkles, Terminal } from 'lucide-react';
 
 const HOMEPAGE_FAQS = [
   {
@@ -53,7 +53,6 @@ const HOMEPAGE_FAQS = [
   },
 ];
 
-// Sample latest posts
 const LATEST_POSTS = [
   {
     slug: 'how-to-count-words-and-characters-online',
@@ -87,7 +86,6 @@ const LATEST_POSTS = [
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState('');
 
-  // 6 core featured gateway tools
   const featuredSlugs = [
     'word-counter',
     'character-counter',
@@ -100,7 +98,6 @@ export default function HomePage() {
     featuredSlugs.includes(tool.slug)
   );
 
-  // Filtered tools when searching
   const filteredTools = searchQuery.trim()
     ? TOOLS_DATA.filter(
         (tool) =>
@@ -118,7 +115,7 @@ export default function HomePage() {
     <div>
       <SchemaMarkup schema={[websiteSchema, organizationSchema, faqSchema]} />
 
-      {/* Hero Section with functional search */}
+      {/* Hero Section */}
       <HeroSection
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
@@ -126,17 +123,20 @@ export default function HomePage() {
 
       {/* Live search results overlay if query exists */}
       {searchQuery.trim() ? (
-        <section className="py-12 bg-white">
+        <section className="py-16 bg-white min-h-[50vh]">
           <Container>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
-                Search Results ({filteredTools.length})
-              </h2>
+            <div className="flex items-center justify-between mb-8 p-6 rounded-2xl bg-indigo-50/60 border border-indigo-100">
+              <div className="flex items-center space-x-3">
+                <Terminal className="w-5 h-5 text-indigo-600" />
+                <h2 className="text-xl sm:text-2xl font-black text-slate-950">
+                  Search Query Results ({filteredTools.length})
+                </h2>
+              </div>
               <button
                 onClick={() => setSearchQuery('')}
-                className="text-xs text-emerald-700 hover:underline font-semibold"
+                className="text-xs font-mono font-bold text-indigo-700 hover:underline px-3 py-1.5 bg-white rounded-lg border border-indigo-200"
               >
-                Clear Search
+                Clear Filter
               </button>
             </div>
 
@@ -147,13 +147,13 @@ export default function HomePage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-12 bg-slate-50 rounded-2xl border border-slate-200">
-                <p className="text-slate-600">
-                  No tools found matching &quot;{searchQuery}&quot;.
+              <div className="text-center py-16 bg-slate-50 rounded-3xl border border-slate-200 max-w-md mx-auto">
+                <p className="text-slate-600 font-medium">
+                  No text utilities match &quot;{searchQuery}&quot;.
                 </p>
                 <Link
                   href="/tools"
-                  className="mt-3 inline-block text-sm font-semibold text-emerald-700 hover:underline"
+                  className="mt-4 inline-block text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-xl transition-colors"
                 >
                   Browse all 22 text tools →
                 </Link>
@@ -163,32 +163,36 @@ export default function HomePage() {
         </section>
       ) : (
         <>
-          {/* 6 Core Featured Tools */}
+          {/* Flagship Essentials */}
           <FeaturedTools tools={featuredTools} />
 
-          {/* All 6 Categories Showcase */}
+          {/* 6 Category Architecture */}
           <CategoryShowcase allTools={TOOLS_DATA} />
 
-          {/* Why Choose Us */}
+          {/* Precision Architectural Guarantees */}
           <WhyChooseUs />
 
-          {/* Recent Blog Posts */}
-          <section className="py-16 bg-white border-t border-slate-200">
+          {/* Editorial Guides & Publications */}
+          <section className="py-24 bg-white border-b border-slate-200/80">
             <Container>
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
                 <div>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
-                    Latest Writing & Formatting Guides
+                  <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-mono font-bold mb-3">
+                    <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
+                    <span>Educational Resources</span>
+                  </div>
+                  <h2 className="text-3xl sm:text-4xl font-black text-slate-950 tracking-tight">
+                    Authoritative Guides & Best Practices
                   </h2>
                   <p className="mt-2 text-sm sm:text-base text-slate-600">
-                    Actionable tutorials on content optimization, text hygiene, and formatting.
+                    Comprehensive tutorials on text analytics, search engine optimization, and data formatting.
                   </p>
                 </div>
                 <Link
                   href="/blog"
-                  className="mt-4 sm:mt-0 inline-flex items-center text-sm font-semibold text-emerald-700 hover:text-emerald-800"
+                  className="mt-4 sm:mt-0 inline-flex items-center text-sm font-bold text-indigo-600 hover:text-indigo-800"
                 >
-                  <span>View All 10 Guides</span>
+                  <span>Explore All 10 Guides</span>
                   <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
               </div>
@@ -201,14 +205,20 @@ export default function HomePage() {
             </Container>
           </section>
 
-          {/* FAQ Section */}
-          <section className="py-16 bg-slate-50 border-t border-slate-200">
+          {/* FAQ Accordion Section */}
+          <section className="py-24 bg-slate-50/60">
             <Container className="max-w-4xl">
-              <SectionHeading
-                title="Frequently Asked Questions"
-                subtitle="Common questions about TextToolsHub, client-side processing, and privacy."
-                centered
-              />
+              <div className="text-center mb-12">
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-indigo-600">
+                  Common Inquiries
+                </span>
+                <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950 mt-2">
+                  Frequently Asked Questions
+                </h2>
+                <p className="text-sm sm:text-base text-slate-600 mt-2">
+                  Learn more about our architecture, privacy guarantees, and usage.
+                </p>
+              </div>
               <FAQAccordion items={HOMEPAGE_FAQS} />
             </Container>
           </section>

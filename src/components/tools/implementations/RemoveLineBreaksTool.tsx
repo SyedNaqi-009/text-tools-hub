@@ -64,7 +64,7 @@ export function RemoveLineBreaksTool() {
               type="checkbox"
               checked={trimLines}
               onChange={(e) => setTrimLines(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Trim Lines Before Joining</span>
           </label>

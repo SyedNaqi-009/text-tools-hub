@@ -37,7 +37,7 @@ export function RemoveEmptyLinesTool() {
               type="checkbox"
               checked={removeEmptyLinesOption}
               onChange={(e) => setRemoveEmptyLinesOption(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Remove Completely Empty Lines</span>
           </label>
@@ -47,7 +47,7 @@ export function RemoveEmptyLinesTool() {
               type="checkbox"
               checked={removeWhitespaceOnly}
               onChange={(e) => setRemoveWhitespaceOnly(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Remove Whitespace-Only Lines</span>
           </label>
@@ -57,7 +57,7 @@ export function RemoveEmptyLinesTool() {
               type="checkbox"
               checked={collapseMultipleEmpty}
               onChange={(e) => setCollapseMultipleEmpty(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Collapse Multiple Blanks to Single</span>
           </label>
@@ -67,13 +67,13 @@ export function RemoveEmptyLinesTool() {
               type="checkbox"
               checked={trimEachLine}
               onChange={(e) => setTrimEachLine(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Trim Each Line</span>
           </label>
         </div>
 
-        <span className="text-emerald-700 font-bold">
+        <span className="text-indigo-600 font-mono font-bold text-xs bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-200">
           Removed: {removedCount} blank lines
         </span>
       </div>

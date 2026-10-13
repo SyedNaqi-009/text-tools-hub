@@ -76,7 +76,7 @@ export function AddLineNumbersTool() {
               type="checkbox"
               checked={skipEmptyLines}
               onChange={(e) => setSkipEmptyLines(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Skip Empty Lines</span>
           </label>

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { TextInput } from '@/components/tools/TextInput';
 import { TextOutput } from '@/components/tools/TextOutput';
 import { convertCase, CaseType } from '@/lib/text-utils/case-converter';
+import { Sparkles, ArrowRight } from 'lucide-react';
 
 interface CaseOption {
   type: CaseType;
@@ -37,7 +38,7 @@ export function CaseConverterTool() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Input */}
       <TextInput
         value={input}
@@ -48,31 +49,34 @@ export function CaseConverterTool() {
           }
         }}
         placeholder="Type or paste your text here to convert capitalization instantly..."
-        label="Original Text"
+        label="Source Text"
         minHeight="min-h-[160px]"
       />
 
       {/* Action Buttons Grid */}
-      <div>
-        <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-2.5">
-          Select Target Case Style
-        </label>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5">
+      <div className="p-6 rounded-3xl bg-slate-50 border border-slate-200">
+        <div className="flex items-center space-x-2 mb-4">
+          <Sparkles className="w-4 h-4 text-indigo-600" />
+          <label className="text-xs font-mono font-bold text-slate-800 uppercase tracking-widest">
+            Select Target Case Style
+          </label>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
           {CASE_BUTTONS.map((item) => (
             <button
               key={item.type}
               type="button"
               onClick={() => handleConvert(item.type)}
-              className={`p-2.5 rounded-xl text-left border transition-all text-xs flex flex-col justify-between ${
+              className={`p-3.5 rounded-2xl text-left border transition-all text-xs flex flex-col justify-between group ${
                 activeCase === item.type
-                  ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                  : 'bg-white text-slate-800 border-slate-200 hover:border-emerald-400 hover:bg-slate-50'
+                  ? 'bg-slate-950 text-white border-slate-950 shadow-md ring-2 ring-indigo-500/20'
+                  : 'bg-white text-slate-800 border-slate-200 hover:border-indigo-400 hover:bg-indigo-50/30'
               }`}
             >
-              <span className="font-bold">{item.label}</span>
+              <span className="font-bold tracking-tight text-sm mb-1">{item.label}</span>
               <span
-                className={`font-mono-code text-[10px] truncate mt-1 ${
-                  activeCase === item.type ? 'text-emerald-100' : 'text-slate-400'
+                className={`font-mono-code text-[11px] truncate ${
+                  activeCase === item.type ? 'text-indigo-300' : 'text-slate-400 group-hover:text-slate-600'
                 }`}
               >
                 {item.preview}

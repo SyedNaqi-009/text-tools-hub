@@ -36,7 +36,7 @@ export function LoremIpsumGeneratorTool() {
                   type="button"
                   onClick={() => setType(t)}
                   className={`px-3 py-1 rounded-md font-semibold capitalize transition-all ${
-                    type === t ? 'bg-emerald-600 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
+                    type === t ? 'bg-slate-950 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'
                   }`}
                 >
                   {t}
@@ -53,7 +53,7 @@ export function LoremIpsumGeneratorTool() {
               max={type === 'paragraphs' ? 50 : type === 'sentences' ? 200 : 2000}
               value={count}
               onChange={(e) => setCount(Math.max(1, parseInt(e.target.value) || 1))}
-              className="w-20 px-2.5 py-1 bg-white border border-slate-300 rounded-lg text-slate-800 font-mono-code"
+              className="w-20 px-2.5 py-1 bg-white border border-slate-300 rounded-lg text-slate-800 font-mono"
             />
           </div>
 
@@ -62,7 +62,7 @@ export function LoremIpsumGeneratorTool() {
             onClick={() => setSeed((s) => s + 1)}
             className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-300 hover:bg-slate-100 font-semibold text-slate-700 transition-colors"
           >
-            <RefreshCw className="w-3.5 h-3.5 text-emerald-600" />
+            <RefreshCw className="w-3.5 h-3.5 text-indigo-600" />
             <span>Regenerate Text</span>
           </button>
         </div>
@@ -73,7 +73,7 @@ export function LoremIpsumGeneratorTool() {
               type="checkbox"
               checked={startWithLorem}
               onChange={(e) => setStartWithLorem(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Start with &quot;Lorem ipsum dolor sit amet...&quot;</span>
           </label>
@@ -83,7 +83,7 @@ export function LoremIpsumGeneratorTool() {
               type="checkbox"
               checked={htmlTags}
               onChange={(e) => setHtmlTags(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Wrap in HTML &lt;p&gt; tags</span>
           </label>

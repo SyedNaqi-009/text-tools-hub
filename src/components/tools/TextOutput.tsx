@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Copy, Check, Download } from 'lucide-react';
+import { Copy, Check, Download, Terminal } from 'lucide-react';
 
 interface TextOutputProps {
   value: string;
@@ -49,20 +49,21 @@ export function TextOutput({
   const lines = value ? value.split(/\r\n|\r|\n/).length : 0;
 
   return (
-    <div className="flex flex-col space-y-2">
+    <div className="flex flex-col space-y-2.5">
       <div className="flex items-center justify-between">
-        <label className="text-sm font-semibold text-slate-800">
-          {label}
+        <label className="text-xs font-mono font-bold uppercase tracking-wider text-slate-700 flex items-center space-x-1.5">
+          <Terminal className="w-3.5 h-3.5 text-indigo-600 inline" />
+          <span>{label}</span>
         </label>
         <div className="flex items-center space-x-2 text-xs">
           <button
             type="button"
             onClick={handleCopy}
             disabled={!value}
-            className={`flex items-center space-x-1.5 px-3 py-1 rounded-md font-medium transition-all ${
+            className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg font-bold transition-all shadow-xs ${
               copied
                 ? 'bg-emerald-600 text-white'
-                : 'text-slate-700 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed'
+                : 'text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed'
             }`}
           >
             {copied ? (
@@ -73,7 +74,7 @@ export function TextOutput({
             ) : (
               <>
                 <Copy className="w-3.5 h-3.5" />
-                <span>Copy</span>
+                <span>Copy Text</span>
               </>
             )}
           </button>
@@ -82,7 +83,7 @@ export function TextOutput({
             type="button"
             onClick={handleDownload}
             disabled={!value}
-            className="flex items-center space-x-1.5 px-3 py-1 rounded-md font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 disabled:opacity-40 disabled:cursor-not-allowed transition-colors border border-slate-200/80"
           >
             <Download className="w-3.5 h-3.5" />
             <span>Download</span>
@@ -90,19 +91,19 @@ export function TextOutput({
         </div>
       </div>
 
-      <div className="relative rounded-xl border border-slate-200 bg-slate-50/70 shadow-xs">
+      <div className="relative rounded-2xl border-2 border-slate-200 bg-slate-50/70 overflow-hidden shadow-2xs">
         <textarea
           readOnly
           value={value}
           placeholder={placeholder}
-          className={`w-full p-4 font-mono-code text-sm text-slate-800 placeholder:text-slate-400 bg-transparent resize-y focus:outline-none ${minHeight}`}
+          className={`w-full p-5 font-mono-code text-sm text-slate-900 placeholder:text-slate-400 bg-transparent resize-y focus:outline-none leading-relaxed ${minHeight}`}
           aria-label={label}
         />
       </div>
 
-      <div className="flex items-center justify-between text-xs text-slate-500 px-1">
-        <span>{words.toLocaleString()} words</span>
-        <span>{characters.toLocaleString()} characters</span>
+      <div className="flex items-center justify-between text-xs font-mono text-slate-500 px-1 py-0.5">
+        <span className="bg-slate-200/70 px-2 py-0.5 rounded text-slate-800 font-semibold">{words.toLocaleString()} words</span>
+        <span>{characters.toLocaleString()} chars</span>
         <span>{lines.toLocaleString()} lines</span>
       </div>
     </div>

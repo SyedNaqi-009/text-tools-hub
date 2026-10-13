@@ -6,7 +6,7 @@ import { Container } from '@/components/ui/Container';
 import { ToolCard } from '@/components/tools/ToolCard';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { CATEGORIES_LIST, TOOLS_DATA, ToolCategory } from '@/lib/tools-data';
-import { Search } from 'lucide-react';
+import { Search, SlidersHorizontal, Terminal } from 'lucide-react';
 
 function ToolsDirectoryContent() {
   const searchParams = useSearchParams();
@@ -35,36 +35,40 @@ function ToolsDirectoryContent() {
   const breadcrumbs = [{ name: 'All Tools', url: '/tools' }];
 
   return (
-    <div className="py-12 bg-slate-50/50 min-h-screen">
+    <div className="py-12 bg-slate-50/40 min-h-screen">
       <Container>
         <Breadcrumbs items={breadcrumbs} />
 
         {/* Directory Header */}
-        <div className="mb-10 text-center sm:text-left">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            All Free Text Tools Directory
+        <div className="mb-12 p-8 rounded-3xl bg-white border border-slate-200/90 shadow-2xs">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-700 text-xs font-mono font-bold mb-3">
+            <Terminal className="w-3.5 h-3.5" />
+            <span>Complete Catalog</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight">
+            All 22 Text Utilities & Analyzers
           </h1>
-          <p className="mt-2 text-base sm:text-lg text-slate-600 max-w-3xl">
-            Explore our complete suite of 22 client-side text tools. Select a category or use the search bar to find the exact utility you need.
+          <p className="mt-3 text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
+            Search, filter by functional category, and launch any of our sub-millisecond client-side text tools.
           </p>
         </div>
 
-        {/* Search input & Horizontal Category Pill Filter Bar */}
-        <div className="space-y-4 mb-10">
-          <div className="max-w-md">
-            <div className="relative flex items-center shadow-xs rounded-xl border border-slate-300 focus-within:border-emerald-500 focus-within:ring-2 focus-within:ring-emerald-500/20 bg-white">
-              <Search className="w-4 h-4 text-slate-400 ml-3.5 shrink-0" />
+        {/* Filter Controls & Search */}
+        <div className="space-y-6 mb-12">
+          <div className="max-w-xl">
+            <div className="relative flex items-center rounded-2xl border-2 border-slate-200 focus-within:border-indigo-600 focus-within:ring-4 focus-within:ring-indigo-600/10 bg-white transition-all p-1">
+              <Search className="w-5 h-5 text-indigo-600 ml-3.5 shrink-0" />
               <input
                 type="text"
                 value={searchFilter}
                 onChange={(e) => setSearchFilter(e.target.value)}
-                placeholder="Filter tools by keyword..."
-                className="w-full py-2.5 pl-2.5 pr-4 text-sm text-slate-800 placeholder:text-slate-400 bg-transparent focus:outline-none"
+                placeholder="Filter tools by keyword, function, or description..."
+                className="w-full py-2.5 pl-3 pr-4 text-sm text-slate-900 placeholder:text-slate-400 bg-transparent focus:outline-none font-medium"
               />
               {searchFilter && (
                 <button
                   onClick={() => setSearchFilter('')}
-                  className="mr-3 text-xs text-slate-400 hover:text-slate-600 font-semibold"
+                  className="mr-3 px-2 py-1 text-xs text-slate-500 hover:text-slate-800 bg-slate-100 rounded-md font-semibold"
                 >
                   Clear
                 </button>
@@ -72,17 +76,17 @@ function ToolsDirectoryContent() {
             </div>
           </div>
 
-          {/* Horizontal pill category buttons */}
-          <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none">
+          {/* Categorical Filter Chips */}
+          <div className="flex items-center space-x-2.5 overflow-x-auto pb-2 scrollbar-none">
             <button
               onClick={() => handleCategoryChange('all')}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap shrink-0 ${
+              className={`px-4 py-2.5 rounded-xl text-xs font-mono font-bold transition-all whitespace-nowrap shrink-0 ${
                 selectedCategory === 'all'
-                  ? 'bg-emerald-600 text-white shadow-sm'
-                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+                  ? 'bg-slate-950 text-white shadow-sm'
+                  : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200/90'
               }`}
             >
-              All Tools ({TOOLS_DATA.length})
+              All Utilities ({TOOLS_DATA.length})
             </button>
 
             {CATEGORIES_LIST.map((cat) => {
@@ -93,10 +97,10 @@ function ToolsDirectoryContent() {
                 <button
                   key={cat.id}
                   onClick={() => handleCategoryChange(cat.id)}
-                  className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all whitespace-nowrap shrink-0 ${
+                  className={`px-4 py-2.5 rounded-xl text-xs font-mono font-bold transition-all whitespace-nowrap shrink-0 ${
                     isSelected
-                      ? 'bg-emerald-600 text-white shadow-sm'
-                      : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+                      ? 'bg-indigo-600 text-white shadow-sm'
+                      : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200/90'
                   }`}
                 >
                   {cat.label} ({count})
@@ -114,18 +118,20 @@ function ToolsDirectoryContent() {
             ))}
           </div>
         ) : (
-          <div className="py-16 text-center bg-white rounded-2xl border border-slate-200 p-8">
-            <p className="text-slate-600 text-base">
-              No text tools match the filter criteria.
+          <div className="py-20 text-center bg-white rounded-3xl border border-slate-200 p-8 max-w-lg mx-auto">
+            <SlidersHorizontal className="w-8 h-8 text-slate-400 mx-auto mb-3" />
+            <h3 className="text-lg font-bold text-slate-900">No matching tools found</h3>
+            <p className="text-slate-500 text-sm mt-1">
+              Try adjusting your search query or reset the category filters.
             </p>
             <button
               onClick={() => {
                 setSelectedCategory('all');
                 setSearchFilter('');
               }}
-              className="mt-3 inline-block text-sm font-semibold text-emerald-700 hover:underline"
+              className="mt-4 px-4 py-2 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
             >
-              Reset Filters
+              Reset All Filters
             </button>
           </div>
         )}
@@ -136,7 +142,7 @@ function ToolsDirectoryContent() {
 
 export default function ToolsDirectoryPage() {
   return (
-    <Suspense fallback={<div className="py-20 text-center">Loading tools directory...</div>}>
+    <Suspense fallback={<div className="py-24 text-center font-mono text-sm text-slate-400">Loading catalog...</div>}>
       <ToolsDirectoryContent />
     </Suspense>
   );

@@ -4,7 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { TextInput } from '@/components/tools/TextInput';
 import { StatsDisplay, StatItem } from '@/components/tools/StatsDisplay';
 import { calculateWordCounterStats } from '@/lib/text-utils/word-counter';
-import { Sliders } from 'lucide-react';
+import { Sliders, BookOpen, Mic } from 'lucide-react';
 
 export function WordCounterTool() {
   const [text, setText] = useState('');
@@ -32,30 +32,36 @@ export function WordCounterTool() {
 
       {/* Reading and Speaking Time Callouts */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200/80 flex items-center justify-between">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex items-center justify-between">
           <div>
-            <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider">
-              Estimated Silent Reading Time
-            </span>
-            <div className="text-2xl font-extrabold text-emerald-950 font-mono-code mt-0.5">
+            <div className="flex items-center space-x-2 text-indigo-600 mb-1">
+              <BookOpen className="w-4 h-4" />
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                Estimated Reading Time
+              </span>
+            </div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-slate-950 font-mono tracking-tight mt-0.5">
               {stats.readingTimeMinutes}m {stats.readingTimeSeconds}s
             </div>
-            <span className="text-xs text-emerald-700/80">
-              Based on {readingWpm} WPM speed
+            <span className="text-xs text-slate-500">
+              Calibrated to {readingWpm} WPM adult silent pace
             </span>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200/80 flex items-center justify-between">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex items-center justify-between">
           <div>
-            <span className="text-xs font-semibold text-amber-800 uppercase tracking-wider">
-              Estimated Speaking Presentation Time
-            </span>
-            <div className="text-2xl font-extrabold text-amber-950 font-mono-code mt-0.5">
+            <div className="flex items-center space-x-2 text-sky-600 mb-1">
+              <Mic className="w-4 h-4" />
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                Speaking Presentation Time
+              </span>
+            </div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-slate-950 font-mono tracking-tight mt-0.5">
               {stats.speakingTimeMinutes}m {stats.speakingTimeSeconds}s
             </div>
-            <span className="text-xs text-amber-700/80">
-              Based on {speakingWpm} WPM speed
+            <span className="text-xs text-slate-500">
+              Calibrated to {speakingWpm} WPM podium keynote pace
             </span>
           </div>
         </div>
@@ -66,19 +72,24 @@ export function WordCounterTool() {
         <button
           type="button"
           onClick={() => setShowSettings(!showSettings)}
-          className="flex items-center space-x-1.5 text-xs font-medium text-slate-600 hover:text-emerald-700 transition-colors"
+          className="flex items-center space-x-1.5 text-xs font-semibold text-slate-600 hover:text-indigo-600 transition-colors"
         >
           <Sliders className="w-3.5 h-3.5" />
-          <span>{showSettings ? 'Hide WPM Speeds' : 'Adjust WPM Reading Speeds'}</span>
+          <span>{showSettings ? 'Hide WPM Calibration' : 'Calibrate WPM Reading Speeds'}</span>
         </button>
       </div>
 
       {showSettings && (
-        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label className="text-xs font-semibold text-slate-700 block mb-1">
-              Silent Reading Speed: <span className="font-mono-code text-emerald-700">{readingWpm} WPM</span>
-            </label>
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                Silent Reading Pace
+              </label>
+              <span className="font-mono text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
+                {readingWpm} WPM
+              </span>
+            </div>
             <input
               type="range"
               min="100"
@@ -86,13 +97,18 @@ export function WordCounterTool() {
               step="10"
               value={readingWpm}
               onChange={(e) => setReadingWpm(Number(e.target.value))}
-              className="w-full accent-emerald-600 cursor-pointer"
+              className="w-full accent-indigo-600 cursor-pointer"
             />
           </div>
           <div>
-            <label className="text-xs font-semibold text-slate-700 block mb-1">
-              Speaking Pace: <span className="font-mono-code text-emerald-700">{speakingWpm} WPM</span>
-            </label>
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                Public Speaking Pace
+              </label>
+              <span className="font-mono text-xs font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded border border-sky-200">
+                {speakingWpm} WPM
+              </span>
+            </div>
             <input
               type="range"
               min="80"
@@ -100,7 +116,7 @@ export function WordCounterTool() {
               step="10"
               value={speakingWpm}
               onChange={(e) => setSpeakingWpm(Number(e.target.value))}
-              className="w-full accent-emerald-600 cursor-pointer"
+              className="w-full accent-indigo-600 cursor-pointer"
             />
           </div>
         </div>

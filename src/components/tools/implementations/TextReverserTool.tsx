@@ -30,10 +30,10 @@ export function TextReverserTool() {
           <button
             type="button"
             onClick={() => setMode('characters')}
-            className={`px-4 py-2 rounded-lg font-bold transition-all ${
+            className={`px-4 py-2 rounded-xl font-bold transition-all ${
               mode === 'characters'
-                ? 'bg-emerald-600 text-white shadow-xs'
-                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                ? 'bg-slate-950 text-white shadow-xs'
+                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
             }`}
           >
             Reverse Characters
@@ -41,10 +41,10 @@ export function TextReverserTool() {
           <button
             type="button"
             onClick={() => setMode('words')}
-            className={`px-4 py-2 rounded-lg font-bold transition-all ${
+            className={`px-4 py-2 rounded-xl font-bold transition-all ${
               mode === 'words'
-                ? 'bg-emerald-600 text-white shadow-xs'
-                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                ? 'bg-slate-950 text-white shadow-xs'
+                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
             }`}
           >
             Reverse Words
@@ -52,10 +52,10 @@ export function TextReverserTool() {
           <button
             type="button"
             onClick={() => setMode('lines')}
-            className={`px-4 py-2 rounded-lg font-bold transition-all ${
+            className={`px-4 py-2 rounded-xl font-bold transition-all ${
               mode === 'lines'
-                ? 'bg-emerald-600 text-white shadow-xs'
-                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                ? 'bg-slate-950 text-white shadow-xs'
+                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
             }`}
           >
             Reverse Lines

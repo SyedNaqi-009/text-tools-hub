@@ -16,28 +16,36 @@ export function FAQAccordion({ items }: { items: FAQItem[] }) {
   };
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3.5">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         return (
           <div
             key={index}
-            className="border border-slate-200 rounded-xl bg-white overflow-hidden transition-all duration-200"
+            className={`border rounded-2xl transition-all duration-200 overflow-hidden ${
+              isOpen
+                ? 'bg-white border-indigo-200 shadow-md shadow-indigo-500/5'
+                : 'bg-white/80 border-slate-200/90 hover:border-slate-300'
+            }`}
           >
             <button
               onClick={() => toggle(index)}
-              className="w-full text-left px-5 py-4 flex items-center justify-between font-semibold text-slate-800 hover:text-emerald-700 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+              className="w-full text-left px-6 py-5 flex items-center justify-between font-bold text-slate-900 hover:text-indigo-600 transition-colors focus:outline-none"
               aria-expanded={isOpen}
             >
-              <span className="pr-4">{item.question}</span>
-              <ChevronDown
-                className={`w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0 ${
-                  isOpen ? 'transform rotate-180 text-emerald-600' : ''
-                }`}
-              />
+              <span className="pr-4 text-base tracking-tight">{item.question}</span>
+              <div className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                isOpen ? 'bg-indigo-50 text-indigo-600' : 'bg-slate-50 text-slate-400'
+              }`}>
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-200 ${
+                    isOpen ? 'rotate-180' : ''
+                  }`}
+                />
+              </div>
             </button>
             {isOpen && (
-              <div className="px-5 pb-5 pt-1 text-slate-600 text-sm leading-relaxed border-t border-slate-100 bg-slate-50/50">
+              <div className="px-6 pb-6 pt-1 text-slate-600 text-sm sm:text-base leading-relaxed border-t border-slate-100/80 bg-slate-50/30">
                 {item.answer}
               </div>
             )}

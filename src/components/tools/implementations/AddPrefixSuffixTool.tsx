@@ -103,7 +103,7 @@ export function AddPrefixSuffixTool() {
               type="checkbox"
               checked={skipEmptyLines}
               onChange={(e) => setSkipEmptyLines(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Skip Empty Lines</span>
           </label>
@@ -113,7 +113,7 @@ export function AddPrefixSuffixTool() {
               type="checkbox"
               checked={trimLinesFirst}
               onChange={(e) => setTrimLinesFirst(e.target.checked)}
-              className="rounded accent-emerald-600"
+              className="rounded accent-indigo-600"
             />
             <span>Trim Lines First</span>
           </label>
